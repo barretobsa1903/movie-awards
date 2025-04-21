@@ -1,0 +1,51 @@
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>
+        <div class="column-filter">
+          <label>Year</label>
+          <input
+          type="text"
+          placeholder="Filter year"
+          (input)="onYearFilterChange($event)" />
+               
+        </div>
+      </th>
+      <th>Title</th>
+      <th>
+        <div class="column-filter">
+          <label>Winner</label>
+          <select (change)="onWinnerFilterChange($event)">
+            <option value="">All</option>
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
+          </select>
+        </div>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let movie of movies">
+      <td>{{ movie.id }}</td>
+      <td>{{ movie.year }}</td>
+      <td>{{ movie.title }}</td>
+      <td>{{ movie.winner ? 'Yes' : 'No' }}</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="custom-pagination">
+  <button (click)="goToPage(currentPage - 1)" [disabled]="currentPage === 1">&lt;</button>
+
+  <button *ngFor="let page of pagesToShow"
+          (click)="goToPage(page)"
+          [disabled]="page === '...'"
+          [class.active]="page === currentPage">
+    {{ page }}
+  </button>
+
+  <button (click)="goToPage(currentPage + 1)" [disabled]="currentPage === totalPages">&gt;</button>
+</div>
+
+

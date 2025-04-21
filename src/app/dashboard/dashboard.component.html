@@ -1,0 +1,66 @@
+<div class="dashboard-container">
+  <div class="row">
+    <section class="panel">
+      <h3>Years with Multiple Winners</h3>
+      <table>
+        <tr><th>Year</th><th>Winners</th></tr>
+        <tr *ngFor="let item of yearsWithMultipleWinners">
+          <td>{{ item.year }}</td>
+          <td>{{ item.winnerCount }}</td>
+        </tr>
+      </table>
+    </section>
+
+    <section class="panel">
+      <h3>Top 3 Studios with Most Wins</h3>
+      <table>
+        <tr><th>Studio</th><th>Wins</th></tr>
+        <tr *ngFor="let studio of topStudios">
+          <td>{{ studio.studio }}</td>
+          <td>{{ studio.winCount }}</td>
+        </tr>
+      </table>
+    </section>
+  </div>
+
+  <div class="row">
+    <section class="panel">
+      <h3>Producer Intervals</h3>
+          <h4>Minimum Intervals</h4>
+      <table *ngIf="producerIntervalsMin?.length > 0">
+        <tr><th>Producer</th><th>Interval</th><th>Previous Year</th><th>Following Year</th></tr>
+        <tr *ngFor="let producer of producerIntervalsMin">
+          <td>{{ producer.producer }}</td>
+          <td>{{ producer.interval }}</td>
+          <td>{{ producer.previousWin }}</td>
+          <td>{{ producer.followingWin }}</td>
+        </tr>
+      </table>
+          <h4>Maximum Intervals</h4>
+      <table *ngIf="producerIntervalsMax?.length > 0">
+        <tr><th>Producer</th><th>Interval</th><th>Previous Year</th><th>Following Year</th></tr>
+        <tr *ngFor="let producer of producerIntervalsMax">
+          <td>{{ producer.producer }}</td>
+          <td>{{ producer.interval }}</td>
+          <td>{{ producer.previousWin }}</td>
+          <td>{{ producer.followingWin }}</td>  
+        </tr>
+      </table>
+    </section>
+    
+    <section class="panel">
+      <h3>Winners by Year</h3>
+      <input type="number" placeholder="Enter year" [(ngModel)]="selectedYear"   min="1888" />
+      <button (click)="onSearchWinnersByYear()">Search</button>
+      <table *ngIf="winnersByYear.length > 0">
+        <tr><th>Year</th><th>Title</th><th>Producers</th><th>Studios</th></tr>
+        <tr *ngFor="let movie of winnersByYear">
+          <td>{{ movie.year }}</td>
+          <td>{{ movie.title }}</td>
+          <td>{{ movie.producers?.join(', ') }}</td>
+          <td>{{ movie.studios?.join(', ') }}</td>
+        </tr>
+      </table>
+    </section>
+  </div>
+</div>

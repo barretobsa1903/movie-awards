@@ -1,10 +1,15 @@
+// app.component.ts
 import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'movie-awards';
+  isCollapsed = false;
+
+  toggleMenu() {
+    this.isCollapsed = !this.isCollapsed;
+  }
 }
