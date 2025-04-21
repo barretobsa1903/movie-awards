@@ -50,8 +50,8 @@ src/
 ### 1. Clone o repositório:
 
 ```bash
-git clone https://github.com/seu-usuario/golden-raspberry-dashboard.git
-cd golden-raspberry-dashboard
+git clone https://github.com/barretobsa1903/movie-awards.git
+cd movie-awards
 ```
 
 ### 2. Instale as dependências:
